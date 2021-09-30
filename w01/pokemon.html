@@ -11,17 +11,27 @@
 
 <body>
     <div id="app">
-        <ul>
-            <li v-for="item in character">
-                <img :src="item.Image" alt="" width="">
-                {{ item.Name }}
-                {{ item.Type }}
-                {{ item.EvolvesTo }}                
-            </li>
-        </ul>
+        <table class="table">
+            <thead>
+            </thead>
+            <tbody>
+                <tr is="row-component" v-for="(item, key) in data" :person="item" :key="key"></row-component>       
+            </tbody>    
+        </table>
     </div>
+    <script type="text/x-template" id="rowComponentTemplate">
+        <tr>
+            <td>{{ person.Name }}</td>
+            <td>{{ person.Type }}</td>
+            <td>{{ person.EvolvesTo }}</td>
+        </tr>
+    </script>
         
     <script>
+        Vue.createApp.component('row-component',{
+            props: ['person'],
+            template: '#rowComponentTemplate'
+        });
         Vue.createApp({
             data() {
                 return {
