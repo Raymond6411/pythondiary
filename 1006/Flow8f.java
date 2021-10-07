@@ -6,8 +6,11 @@ class Flow8f{
       int power = 1;
       System.out.print("bound = ");
       bound = cin.nextInt();
-      for(  {
-         
+      for(  ; power < bound ;  ){
+         k = k + 1;
+         power = power * 2;
+         System.out.println("k = " + k + " power = " + power);
       }
+      System.out.println("k = " + k);
    }
 }
